@@ -6,23 +6,38 @@ format:
     output-file: readme.md
 ---
 
-## Quarto
+# Подготовка воспроизводимых отчётов
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+## Цель работы
 
-## Running Code
+1.  Подготовить рабочее окружение для работы с RStudio
+2.  Создать воспроизводимый отчёт
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+## Исходные данные
 
-```{r}
-1 + 1
-```
+1.  Ноутбук с windows 11
+2.  Git
 
-You can add options to executable code like this
+## План
 
-```{r}
-#| echo: false
-2 * 2
-```
+1.  Установить R
+2.  Установить RStudio
+3.  Написать отчёт о проделанной работе по шаблону
 
-The `echo: false` option disables the printing of code (only output is displayed).
+## Шаги
+
+1.  Для начала зайдём на сайт RStudio ![Сайт RStudio](images/image1.png)
+2.  Скачаем R ![Установка R](images/image2.png)
+3.  Установим RStudio ![Установка RStudio](images/image3.png)
+4.  Создадим проект на github(проект создавал изначально на github чтобы отправить ссылку в форму) ![Создание проекта](images/image4.png)
+5.  Откроем проект в RStudio ![Открытие проекта](images/image5.png)
+6.  Напишем отчёт ![Написание отчёта](images/image6.png)
+7.  Закомитим и запушим изменения в проекте. ![Commit и Push](images/image7.png)
+
+## Оценка результата
+
+Мы установили окружение для работы с RSTudio и подготовили воспроизводимый отчёт
+
+## Вывод
+
+Таким образом мы научились основам работы с git, подготовили окружение для будующих работ и поняли как создавать отчёты.
