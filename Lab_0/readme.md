@@ -28,7 +28,15 @@ rat1onal@yandex.ru
     отправить ссылку в форму) ![Создание проекта](images/image4.png)
 5.  Откроем проект в RStudio ![Открытие проекта](images/image5.png)
 6.  Напишем отчёт ![Написание отчёта](images/image6.png)
-7.  Закомитим и запушим изменения в проекте. ![Commit и
+7.  Отчет может содержать код.![Код](images/image8.png)
+
+``` r
+print('Hello World!')
+```
+
+    [1] "Hello World!"
+
+1.  Закомитим и запушим изменения в проекте. ![Commit и
     Push](images/image7.png)
 
 ## Оценка результата
