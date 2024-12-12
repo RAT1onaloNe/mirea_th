@@ -35,361 +35,361 @@ format:
 2.  Запускаем задания с помощью команды.
 
 ```{r}
-#swirl::swirl()
+swirl::swirl()
 ```
 
 3. "Basic Building Blocks"
 
 ```{r}
-#12
+12
 ```
 
 ```{r}
-#5 + 7
+5 + 7
 ```
 
 ```{r}
-#x <- 5 + 7
+x <- 5 + 7
 ```
 
 ```{r}
-#x
+x
 ```
 
 ```{r}
-#y <- x - 3
+y <- x - 3
 ```
 
 ```{r}
-#y
+y
 ```
 
 ```{r}
-#z <- c(1.1,9,3.4)
+z <- c(1.1,9,3.4)
 ```
 
 ```{r}
-#z <- c(1.1, 9, 3.14)
+z <- c(1.1, 9, 3.14)
 ```
 
 ```{r}
-#?c
+?c
 ```
 
 ```{r}
-#z
+z
 ```
 
 ```{r}
-#z2 <- c(z,555)
+z2 <- c(z,555)
 ```
 
 ```{r}
-#c (z,555,z)
+c (z,555,z)
 ```
 
 ```{r}
-#z * 2 + 100
+z * 2 + 100
 ```
 
 ```{r}
-#my_sqrt <- sqrt(z - 1)
+my_sqrt <- sqrt(z - 1)
 ```
 
 ```{r}
-#my_sqrt
+my_sqrt
 ```
 
 ```{r}
-# my_div <- z / my_sqrt
+my_div <- z / my_sqrt
 ```
 
 ```{r}
-#my_div
+my_div
 ```
 
 ```{r}
-#c(1, 2, 3, 4) + c(0, 10)
+c(1, 2, 3, 4) + c(0, 10)
 ```
 
 ```{r}
-#c(1, 2, 3, 4) + c(0, 10, 100)
+c(1, 2, 3, 4) + c(0, 10, 100)
 ```
 
 ```{r}
-#z * 2 + 1000
+z * 2 + 1000
 ```
 
 ```{r}
-#my_div
+my_div
 ```
 
 4. "Workspace and Files"
 
 ```{r}
-#getwd()
+getwd()
 ```
 
 ```{r}
-#ls()
+ls()
 ```
 
 ```{r}
-#x <- 9
+x <- 9
 ```
 
 ```{r}
-#ls()
+ls()
 ```
 
 ```{r}
-#dir()
+dir()
 ```
 
 ```{r}
-#?list.files
+?list.files
 ```
 
 ```{r}
-#args()
+args()
 ```
 
 ```{r}
-#args(list.files())
+args(list.files())
 ```
 
 ```{r}
-#args(list.files)
+args(list.files)
 ```
 
 ```{r}
-#old.dir <- getwd()
+old.dir <- getwd()
 ```
 
 ```{r}
-#dir.create("testdir")
+dir.create("testdir")
 ```
 
 ```{r}
-#setwd("testdir")
+setwd("testdir")
 ```
 
 ```{r}
-#file.create("mytest.R")
+file.create("mytest.R")
 ```
 
 ```{r}
-#ls()
+ls()
 ```
 
 ```{r}
-#list.files()
+list.files()
 ```
 
 ```{r}
-#file.exists("mytest.R")
+file.exists("mytest.R")
 ```
 
 ```{r}
-#file.info("mytest.R")
+file.info("mytest.R")
 ```
 
 ```{r}
-#file.rename("mytest.R", "mytest2.R")
+file.rename("mytest.R", "mytest2.R")
 ```
 
 ```{r}
-#file.copy("mytest2.R", "mytest3.R")
+file.copy("mytest2.R", "mytest3.R")
 ```
 
 ```{r}
-#file.path("mytest3.R")
+file.path("mytest3.R")
 ```
 
 ```{r}
-#file.path("folder1", "folder2")
+file.path("folder1", "folder2")
 ```
 
 ```{r}
-#?dir.create
+?dir.create
 ```
 
 ```{r}
-#dir.create(file.path('testdir2', 'testdir3'), recursive = TRUE)
+dir.create(file.path('testdir2', 'testdir3'), recursive = TRUE)
 ```
 
 ```{r}
-#unlink('testdir2', recursive = TRUE)
+unlink('testdir2', recursive = TRUE)
 ```
 
 ```{r}
-#setwd(old.dir)
+setwd(old.dir)
 ```
 
 5. "Sequences of Numbers"
 
 ```{r}
-#1:20
+1:20
 ```
 
 ```{r}
-#pi:10
+pi:10
 ```
 
 ```{r}
-#15:1
+15:1
 ```
 
 ```{r}
-#?':'
+?':'
 ```
 
 ```{r}
-#seq(1,20)
+seq(1,20)
 ```
 
 ```{r}
-#seq(0, 10, by=0.5)
+seq(0, 10, by=0.5)
 ```
 
 ```{r}
-#my_seq <- seq(5, 10, length=30)
+my_seq <- seq(5, 10, length=30)
 ```
 
 ```{r}
-#length(my_seq)
+length(my_seq)
 ```
 
 ```{r}
-#1:length(my_seq)
+1:length(my_seq)
 ```
 
 ```{r}
-#seq(along.with = my_seq)
+seq(along.with = my_seq)
 ```
 
 ```{r}
-#seq_along(my_seq)
+seq_along(my_seq)
 ```
 
 ```{r}
-#rep(0, times=40)
+rep(0, times=40)
 ```
 
 ```{r}
-#rep(c(0, 1, 2), times = 10)
+rep(c(0, 1, 2), times = 10)
 ```
 
 ```{r}
-#rep(c(0, 1, 2), each = 10)
+rep(c(0, 1, 2), each = 10)
 ```
 
 6. "Vectors"
 
 ```{r}
-#num_vect <- c(0.5, 55, -10, 6)
+num_vect <- c(0.5, 55, -10, 6)
 ```
 
 ```{r}
-#tf <- (num_vect < 1)
+tf <- (num_vect < 1)
 ```
 
 ```{r}
-#tf <- num_vect < 1
+tf <- num_vect < 1
 ```
 
 ```{r}
-#tf
+tf
 ```
 
 ```{r}
-#num_vect >= 6
+num_vect >= 6
 ```
 
 ```{r}
-#my_char <- c("My", "name", "is")
+my_char <- c("My", "name", "is")
 ```
 
 ```{r}
-#my_char
+my_char
 ```
 
 ```{r}
-#paste(my_char, collapse = " ")
+paste(my_char, collapse = " ")
 ```
 
 ```{r}
-#my_name <- c(my_char, "Johnny")
+my_name <- c(my_char, "Johnny")
 ```
 
 ```{r}
-#my_name
+my_name
 ```
 
 ```{r}
-#paste(my_name, collapse = " ")
+paste(my_name, collapse = " ")
 ```
 
 ```{r}
-#paste("Hello", "world!", sep = " ")
+paste("Hello", "world!", sep = " ")
 ```
 
 ```{r}
-#paste(1:3, c("X", "Y", "Z"), sep = "")
+paste(1:3, c("X", "Y", "Z"), sep = "")
 ```
 
 ```{r}
-#paste(LETTERS, 1:4, sep = "-")
+paste(LETTERS, 1:4, sep = "-")
 ```
 
 8. "Missing Values"
 
 ```{r}
-#x <- c(44, NA, 5, NA)
+x <- c(44, NA, 5, NA)
 ```
 
 ```{r}
-#x * 3
+x * 3
 ```
 
 ```{r}
-#y <- rnorm(1000)
+y <- rnorm(1000)
 ```
 
 ```{r}
-# z <- rep(NA, 1000)
+z <- rep(NA, 1000)
 ```
 
 ```{r}
-#my_data <- sample(c(y, z), 100)
+my_data <- sample(c(y, z), 100)
 ```
 
 ```{r}
-#my_na <- is.na(my_data)
+my_na <- is.na(my_data)
 ```
 
 ```{r}
-#my_na
+my_na
 ```
 
 ```{r}
-#my_data == NA
+my_data == NA
 ```
 
 ```{r}
-#sum(my_na)
+sum(my_na)
 ```
 
 ```{r}
-#my_data
+my_data
 ```
 
 ```{r}
-#0 / 0
+0 / 0
 ```
 
 ```{r}
-#Inf - Inf
+Inf - Inf
 ```
 
 ## Оценка результата
