@@ -42,7 +42,7 @@ format:
 2.  Запускаем задания с помощью команды.
 
 ```{r}
-#swirl::swirl()
+swirl::swirl()
 ```
 
 3. "Basic Building Blocks"
