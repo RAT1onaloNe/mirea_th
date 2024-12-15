@@ -21,8 +21,8 @@ format:
 
 1.  Windows 11
 2.  Rstudio Desktop
-3.  Apache Arrow
-4.  Yandex Object Storage
+3.  Yandex Object Storage
+4.  Apache Arrow
 
 ## План
 
@@ -39,9 +39,6 @@ library(dplyr)
 library(tidyverse)
 #download.file("https://storage.yandexcloud.net/arrow-datasets/tm_data.pqt",destfile = "tm_data.pqt")
 df <- arrow::open_dataset(sources = "tm_data.pqt", format = "parquet")
-glimpse(df)
-```
-```{r}
 glimpse(df)
 ```
 
