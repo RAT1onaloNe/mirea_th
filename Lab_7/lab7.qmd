@@ -1,0 +1,167 @@
+---
+title: "Lаb1"
+author: "rat1onal@yandex.ru"
+format: 
+  md:
+    output-file: README.md
+---
+
+# Анализ данных сетевого трафика при помощи библиотеки Arrow
+
+## Цель работы
+
+1. Изучить возможности технологии Apache Arrow для обработки и анализ больших
+данных
+2. Получить навыки применения Arrow совместно с языком программирования R
+3. Получить навыки анализа метаинфомации о сетевом трафике
+4. Получить навыки применения облачных технологий хранения, подготовки и
+анализа данных: Yandex Object Storage, Rstudio Server.
+
+## Исходные данные
+
+1.  Windows 11
+2.  Rstudio Desktop
+3.  Apache Arrow
+4.  Yandex Object Storage
+
+## План
+
+1.  Импорт данных через функцию `open_dataset`.
+2.  Выполнение заданий, описанных ниже.
+
+## Шаги
+
+1.  Импортируем данные с помощью библиотеки arrow
+
+```{r}
+library(arrow)
+library(dplyr)
+library(tidyverse)
+#download.file("https://storage.yandexcloud.net/arrow-datasets/tm_data.pqt",destfile = "tm_data.pqt")
+df <- arrow::open_dataset(sources = "tm_data.pqt", format = "parquet")
+glimpse(df)
+```
+```{r}
+glimpse(df)
+```
+
+2.  Приступаем к выполнению заданий
+
+  a.  Найдите утечку данных из вашей сети
+    
+```{r}
+res_task_a <- df %>% 
+  filter((str_detect(src, "^12\\.") | str_detect(src, "^13\\.") | str_detect(src, "^14\\.")) &
+         !str_detect(dst, "^12\\.") & !str_detect(dst, "^13\\.") & !str_detect(dst, "^14\\.")) %>%
+  group_by(src) %>%
+  summarise(sum = sum(bytes), .groups = "drop") %>%
+  arrange(desc(sum)) %>%
+  slice_head(n = 1) %>%
+  select(src)
+
+res_task_a %>% collect() %>% knitr::kable()
+
+```
+    
+  b.  Найдите утечку данных 2
+    
+  Определяем рабочее время по пиковому трафику.
+    
+```{r}
+res_task_b1 <- df %>%
+  select(timestamp, src, dst, bytes) %>%
+  mutate(
+    trafic = str_detect(src, "^(12|13|14)\\.") & !str_detect(dst, "^(12|13|14)\\."),
+    time = hour(as_datetime(timestamp / 1000))
+  ) %>%
+  filter(trafic, between(time, 0, 24)) %>%
+  group_by(time) %>%
+  summarise(trafictime = n(), .groups = "drop") %>%
+  arrange(desc(trafictime))
+
+res_task_b1 %>% collect() %>% knitr::kable()
+
+
+```
+    
+  Уточняем утечку данных в рабочие часы (с 16 до 23).
+    
+```{r}
+res_task_b2 <- df %>%
+  mutate(time = hour(as_datetime(timestamp / 1000))) %>%
+  filter(
+    !str_detect(src, "^13\\.37\\.84\\.125"),
+    str_detect(src, "^(12|13|14)\\."),
+    !str_detect(dst, "^(12|13|14)\\."),
+    between(time, 1, 15)
+  ) %>%
+  group_by(src) %>%
+  summarise(sum = sum(bytes), .groups = "drop") %>%
+  arrange(desc(sum)) %>%
+  slice_head(n = 1) %>%
+  select(src)
+
+res_task_b2 %>% collect() %>% knitr::kable()
+
+```
+    
+  c.  Найдите утечку данных 3
+  
+  Выявляем порт с аномальным трафиком.
+    
+```{r}
+res_task_c_data <- df %>%
+  filter(
+    !str_detect(src, "^13\\.37\\.84\\.125"),
+    !str_detect(src, "^12\\.55\\.77\\.96"),
+    str_detect(src, "^(12|13|14)\\."),
+    !str_detect(dst, "^(12|13|14)\\.")
+  ) %>%
+  select(src, bytes, port)
+
+
+```
+    
+    Определяем источник трафика для данного порта.
+    
+```{r}
+res_task_c1 <- res_task_c_data %>%
+  group_by(port) %>%
+  summarise(
+    mean = mean(bytes),
+    max = max(bytes),
+    sum = sum(bytes),
+    .groups = "drop"
+  ) %>%
+  mutate(Raz = max - mean) %>%
+  filter(Raz != 0) %>%
+  arrange(desc(Raz)) %>%
+  slice_head(n = 1) %>%
+  collect()
+
+res_task_c1 %>% knitr::kable()
+
+
+```
+
+```{r}
+
+res_task_c2 <- res_task_c_data %>%
+  filter(port == 37) %>%
+  group_by(src) %>%
+  summarise(mean = mean(bytes), .groups = "drop") %>%
+  arrange(desc(mean)) %>%
+  slice_head(n = 1) %>%
+  select(src)
+
+res_task_c2 %>% collect() %>% knitr::kable()
+
+
+```
+## Оценка результата
+
+Импортированы и проанализированы данные tm_data. Выполнены задания по анализу утечек данных.
+
+## Вывод
+
+В ходе работы мы изучили возможности библиотеки Arrow, научились анализировать сетевой трафик и применять облачные технологии для обработки данных.
